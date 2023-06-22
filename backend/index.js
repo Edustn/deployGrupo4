@@ -691,6 +691,7 @@ app.get('/request', async (req, res) => {
 	let sql = "select * from TB_REQUISICAO where ID_REQUISICAO=?";
 	await DBM.select(sql, [id]).then(async (request) => {
 		let requestData = request[0];
+		// console.log(requestData)
 		let id = requestData["ID_REQUISICAO"];
 
 		requestData["CONEXAO"] = await DBM.select("select * from TB_REQ_CONEXAO where ID_REQUISICAO=?", [id]);
